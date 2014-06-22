@@ -75,16 +75,16 @@ public class MainActivity extends Activity {
 		memSpeedMinSpinner = (Spinner) findViewById(R.id.mem_min_selection);
 		memSpeedMaxSpinner = (Spinner) findViewById(R.id.mem_max_selection);
 
-
-		refresh(null);
-		setSpinnerData();
 	}
 
 
 
 
 	public void getRoot(View v){
-		runAndGetStaticCommandOutput("su");
+
+		List<String> dummy = new ArrayList<String>();
+		dummy.add("ls");
+		runAsRoot(dummy);
 	}
 
 	public void setCpuPerm(View v){
@@ -112,6 +112,7 @@ public class MainActivity extends Activity {
 		TextView memMaxFreq = (TextView) findViewById(R.id.mem_max_freq);
 		memMaxFreq.setText(getCurrentMemMaxFreq());
 
+		setSpinnerData();
 
 	}
 
