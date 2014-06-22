@@ -1,0 +1,236 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.yeokhengmeng.dvfsodroid.MainActivity"
+    tools:ignore="MergeRootFrame" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="19dp"
+        android:text="Type" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="16dp"
+        android:text="CPU Governor" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/button2"
+        android:onClick="applyCurrent"
+        android:text="Apply Selection" />
+
+    <Spinner
+        android:id="@+id/cpu_governor_selection"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_above="@+id/cpu_freq_selection"
+        android:layout_alignLeft="@+id/textView3"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/textView4" />
+
+    <Spinner
+        android:id="@+id/cpu_freq_selection"
+        android:layout_width="wrap_content"
+        android:layout_height="35dp"
+        android:layout_above="@+id/gpu_min_freq"
+        android:layout_alignLeft="@+id/cpu_governor_selection"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/textView5" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:onClick="getRoot"
+        android:text="Get Root Permissions" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toRightOf="@+id/button4"
+        android:onClick="setCpuPerm"
+        android:text="Set CPU Permissions" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/button3"
+        android:layout_toRightOf="@+id/button1"
+        android:onClick="refresh"
+        android:text="Refresh" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView4"
+        android:layout_marginLeft="48dp"
+        android:layout_toRightOf="@+id/textView9"
+        android:text="Current Settings" />
+
+    <TextView
+        android:id="@+id/cpu_governor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView4"
+        android:layout_alignBottom="@+id/textView4"
+        android:layout_alignLeft="@+id/textView2"
+        android:text="None" />
+
+    <TextView
+        android:id="@+id/gpu_min_freq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textView6"
+        android:layout_alignLeft="@+id/cpu_freq"
+        android:layout_alignTop="@+id/textView6"
+        android:text="None" />
+
+    <TextView
+        android:id="@+id/mem_min_freq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView9"
+        android:layout_alignLeft="@+id/gpu_max_freq"
+        android:layout_alignTop="@+id/textView8"
+        android:text="None" />
+
+    <TextView
+        android:id="@+id/mem_max_freq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView9"
+        android:layout_alignBottom="@+id/textView9"
+        android:layout_alignLeft="@+id/mem_min_freq"
+        android:text="None" />
+
+    <TextView
+        android:id="@+id/cpu_freq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView5"
+        android:layout_alignBottom="@+id/textView5"
+        android:layout_alignLeft="@+id/cpu_governor"
+        android:text="None" />
+
+    <TextView
+        android:id="@+id/gpu_max_freq"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView7"
+        android:layout_alignBottom="@+id/textView7"
+        android:layout_alignLeft="@+id/gpu_min_freq"
+        android:text="None" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView5"
+        android:layout_below="@+id/textView5"
+        android:layout_marginTop="35dp"
+        android:text="GPU Min Freq" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_below="@+id/textView4"
+        android:layout_marginTop="35dp"
+        android:text="CPU Freq" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView6"
+        android:layout_below="@+id/textView6"
+        android:layout_marginTop="35dp"
+        android:text="GPU Max Freq" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView7"
+        android:layout_below="@+id/textView7"
+        android:layout_marginTop="35dp"
+        android:text="Mem Min Freq" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView8"
+        android:layout_below="@+id/textView8"
+        android:layout_marginTop="35dp"
+        android:text="Mem Max Freq" />
+
+    <Spinner
+        android:id="@+id/gpu_min_selection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/gpu_max_freq"
+        android:layout_alignLeft="@+id/cpu_freq_selection"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/cpu_freq_selection" />
+
+    <Spinner
+        android:id="@+id/gpu_max_selection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/mem_min_freq"
+        android:layout_alignLeft="@+id/gpu_min_selection"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/gpu_max_freq" />
+
+    <Spinner
+        android:id="@+id/mem_min_selection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/mem_max_freq"
+        android:layout_alignLeft="@+id/gpu_max_selection"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/mem_min_freq" />
+
+    <Spinner
+        android:id="@+id/mem_max_selection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/mem_min_selection"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/mem_max_freq" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView4"
+        android:layout_alignLeft="@+id/button2"
+        android:layout_marginLeft="17dp"
+        android:text="Selection" />
+
+</RelativeLayout>
+
