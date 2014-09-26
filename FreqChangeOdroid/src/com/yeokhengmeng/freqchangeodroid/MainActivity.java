@@ -16,7 +16,6 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -31,7 +30,7 @@ public class MainActivity extends Activity {
 	public static final String FILE_CPU_SCALING_FREQ = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_setspeed";
 	public static final String FILE_CPU_SCALING_GOVERNER = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor";
 
-	public static final String FILE_CPU_AVAILABLE_FREQS = "/sys/devices/system/cpu/cpufreq/iks-cpufreq";
+	public static final String FILE_CPU_AVAILABLE_FREQS = "/sys/devices/system/cpu/cpufreq/iks-cpufreq/freq_table";
 	public static final String FILE_CPU_AVAILABLE_GOVERNERS = "/sys/devices/system/cpu/cpu0/cpufreq/scaling_available_governors";
 
 	//GPU
@@ -135,8 +134,6 @@ public class MainActivity extends Activity {
 		Spinner gpuSpeedMaxSpinner = (Spinner) findViewById(R.id.gpu_max_selection);
 		setDataToThisSpinner(gpuSpeedMaxSpinner, gpuFreqs);
 
-
-
 		Spinner memSpeedMinSpinner = (Spinner) findViewById(R.id.mem_min_selection);
 		String[] memFreqs = getMemFreqs();
 		setDataToThisSpinner(memSpeedMinSpinner, memFreqs);
@@ -202,30 +199,7 @@ public class MainActivity extends Activity {
 	}
 
 	public String[] getCPUFreqs(){
-		
-		List<String> freqs = new ArrayList<String>();
-		
-		int current = 250000;
-		while(current <= 1600000){
-			freqs.add(Integer.toString(current));
-			if( 250000 <= current  && current <= 550000){
-				current += 50000;
-			} else if( 600000 <= current && current <= 1600000){
-				current += 100000;
-				
-				if(current == 700000){
-					// 700000 frequency
-					current += 100000;
-				}
-				
-			} else {
-				break;
-			}
-		}
-		String[] result = new String[freqs.size()];
-		freqs.toArray(result);
-		
-		return result;
+		return getAvailableOptionsFromFile(FILE_CPU_AVAILABLE_FREQS, false);
 	}
 
 
@@ -352,7 +326,6 @@ public class MainActivity extends Activity {
 
 
 			String result = log.toString();
-			Toast.makeText(this, command + ", output: " + log, Toast.LENGTH_SHORT).show();;
 			Log.d("TAG", "Run Command output: " + result);
 			return result;
 
